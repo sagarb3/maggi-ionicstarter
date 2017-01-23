@@ -1,0 +1,37 @@
+angular.module('maggi.route',[]).config(routingFunction);
+function routingFunction($stateProvider, $urlRouterProvider){
+    $stateProvider.state('master',{
+        url:'/master',
+        abstract:true,
+        templateUrl:'templates/master/master.view.html'
+    }).state('master.login',{
+        url:'/login',        
+        views:{
+            masterPage:{
+                templateUrl:'templates/login/login.view.html',
+                controller:'LoginCtrl',
+                controllerAs:'vm'
+            }
+        }
+    }).state('master.reset',{
+        url:'/reset',       
+        views:{
+            masterPage:{
+                templateUrl:'templates/reset/reset.view.html',
+                controller:'ResetCtrl',
+                controllerAs:'vm'
+            }
+        }
+    }).state('master.register',{
+        url:'/register',     
+        views:{
+            masterPage:{
+                templateUrl:'templates/register/register.view.html',
+                controller:'RegisterCtrl',
+                controllerAs:'vm'
+            }
+        }
+    })
+    $urlRouterProvider.otherwise('/master/login');
+
+}
